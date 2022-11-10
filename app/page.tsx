@@ -1,43 +1,71 @@
-import styles from "./page.module.css";
+import Link from "next/link";
+import { Suspense } from "react";
+import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 
-export default function Home() {
-  // import { useVirtualizer } from "@tanstack/react-virtual";
+import styles from "./page.module.css";
+import { Item } from "./types";
+
+export default function Home({ searchParams }: { searchParams: any }) {
+  const { page } = searchParams;
+
+  const intPage = parseInt(page ?? "0");
 
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1>List!</h1>
-        {/** @ts-ignore */}
-        <List length={20} />
+        <Link href="/">
+          <h1>List</h1>
+        </Link>
+
+        <ul>
+          <InfiniteScrollWrapper>
+            <>
+              {[...Array(intPage + 1)].map((_, index) => {
+                const start = index * 10;
+                const limit = start + 10;
+
+                console.log({ start, limit });
+
+                return (
+                  <>
+                    {/** @ts-ignore */}
+                    <ListPart start={start} limit={limit} />
+                  </>
+                );
+              })}
+            </>
+          </InfiniteScrollWrapper>
+        </ul>
       </main>
     </div>
   );
 }
 
-type Item = {
-  albumId: number;
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-};
-
-async function List({ length }: { length: number }) {
+async function ListPart({ start, limit }: { start: number; limit: number }) {
   const response = await fetch(
-    `http://jsonplaceholder.typicode.com/photos?_start=${0}&_limit=${le}`
+    `http://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${10}`
   );
-  const people: Item[] = await response.json();
+  const items: Item[] = await response.json();
 
   return (
-    <ul>
-      {people.map((item) => {
-        return (
-          <li key={item.id}>
-            <h2>{item.title}</h2>
-            <p>{item.url}</p>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <p>Start: {start}</p>
+      <p>Limit: {limit}</p>
+
+      <Suspense fallback={<p>Loading</p>}>
+        {items.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
+      </Suspense>
+    </>
+  );
+}
+
+function Item({ title, id }: Item) {
+  return (
+    <li style={{ width: "600px", maxWidth: "90%" }}>
+      <h2>{title}</h2>
+      <p>{id}</p>
+    </li>
   );
 }
