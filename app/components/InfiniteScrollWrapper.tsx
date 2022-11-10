@@ -30,7 +30,7 @@ export function InfiniteScrollWrapper({
   return (
     <>
       {children}
-      <div ref={ref} />;
+      <div ref={ref} />
     </>
   );
 }
