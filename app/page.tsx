@@ -18,7 +18,7 @@ export default function Home({ searchParams }: PageProps) {
           <h1>List</h1>
         </Link>
 
-        <ul>
+        <ul className={styles.list}>
           <InfiniteScrollWrapper>
             <>
               {[...Array(intPage + 1)].map((_, index) => {
@@ -49,7 +49,7 @@ async function ListPart({ start, limit }: { start: number; limit: number }) {
   const items: Item[] = await response.json();
 
   return (
-    <>
+    <div className={styles.listPart}>
       <p>Start: {start}</p>
       <p>Limit: {limit}</p>
 
@@ -58,15 +58,28 @@ async function ListPart({ start, limit }: { start: number; limit: number }) {
           <Item key={item.id} {...item} />
         ))}
       </Suspense>
-    </>
+    </div>
   );
 }
 
-function Item({ title, id }: Item) {
+function Item({ title, id, thumbnailUrl }: Item) {
   return (
     <li style={{ width: "600px", maxWidth: "90%" }}>
-      <h2>{title}</h2>
-      <p>{id}</p>
+      <Link href={String(id)}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 20,
+            alignItems: "center",
+          }}
+        >
+          <img src={thumbnailUrl} width="50" height="50" />
+          <h2>
+            {id}: {title}
+          </h2>
+        </div>
+      </Link>
     </li>
   );
 }

@@ -11,6 +11,16 @@
   align-items: center;
 }
 
+.list {
+  list-style-type: none;
+}
+
+.listPart {
+  background: rgb(23, 23, 23);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
 
 .title {
   margin: 0;
