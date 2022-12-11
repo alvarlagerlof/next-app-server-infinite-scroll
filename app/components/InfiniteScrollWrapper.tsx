@@ -17,6 +17,7 @@ export function InfiniteScrollWrapper({
       // Ugly, I know
       if (entry.isIntersecting) {
         router.push(`?page=${parseInt(searchParams.get("page") ?? "0") + 1}`);
+        router.refresh();
       }
     });
     if (ref.current) {
