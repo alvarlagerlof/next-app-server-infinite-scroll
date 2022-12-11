@@ -32,7 +32,101 @@ export function InfiniteScrollWrapper({
   return (
     <>
       {children}
-      <div ref={ref} />
+      <div
+        ref={ref}
+        style={{
+          background: "rgb(23, 23, 23)",
+          width: "100%",
+          borderRadius: "20px",
+          padding: "30px 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+        }}
+      >
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "70px",
+            borderRadius: "5px",
+            height: "20px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "70px",
+            borderRadius: "5px",
+            height: "20px",
+            marginBlock: "10px",
+          }}
+        />
+
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        ></div>
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+        <div
+          style={{
+            background: "rgb(30, 30, 30)",
+            width: "100%",
+            borderRadius: "10px",
+            height: "50px",
+          }}
+        />
+      </div>
     </>
   );
 }
