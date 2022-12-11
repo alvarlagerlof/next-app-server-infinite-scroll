@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     scrollRestoration: true,
+    runtime: "experimental-edge",
   },
 };
 

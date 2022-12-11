@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment, Suspense } from "react";
+import { Suspense } from "react";
 import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 
 import styles from "./page.module.css";
