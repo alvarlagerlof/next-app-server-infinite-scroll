@@ -25,7 +25,7 @@ export function InfiniteScrollWrapper({
           console.log("loading more");
         }
       },
-      { rootMargin: "600px" }
+      { rootMargin: "1200px" }
     );
     if (ref.current) {
       observer.observe(ref.current);
