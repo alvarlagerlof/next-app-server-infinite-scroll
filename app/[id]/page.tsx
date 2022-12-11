@@ -1,9 +1,3 @@
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
-import Link from "next/link";
-import { Suspense } from "react";
-
-import styles from "./page.module.css";
-
 // @ts-ignore
 export default async function Home({ params }) {
   const { id } = params;
