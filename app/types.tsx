@@ -1,4 +1,4 @@
-export type Item = {
+export type ItemData = {
   albumId: number;
   id: number;
   title: string;
