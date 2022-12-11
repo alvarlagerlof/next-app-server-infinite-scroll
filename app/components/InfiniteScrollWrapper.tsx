@@ -14,16 +14,19 @@ export function InfiniteScrollWrapper({
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      // Ugly, I know
-      if (entry.isIntersecting) {
-        router.replace(
-          `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
-        );
-        router.refresh();
-        console.log("loading more");
-      }
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Ugly, I know
+        if (entry.isIntersecting) {
+          router.replace(
+            `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
+          );
+          router.refresh();
+          console.log("loading more");
+        }
+      },
+      { rootMargin: "600px" }
+    );
     if (ref.current) {
       observer.observe(ref.current);
     }
