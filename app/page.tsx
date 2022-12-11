@@ -27,7 +27,7 @@ export default function Home({ searchParams }) {
           <Code>.replace</Code> and not <Code>.push</Code> to not fill the
           history with query params, so that the back button still works as
           expected. Then <Code>router.refresh()</Code> is called to tell Next to
-          keep the scroll position (I think, still exporing).
+          keep the scroll position. (Still exploring that part)
         </p>
         <p>
           All in all, this setup causes some server components to render,
