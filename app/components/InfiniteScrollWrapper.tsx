@@ -21,7 +21,7 @@ export function InfiniteScrollWrapper({
           `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
         );
         router.refresh();
-        console.log("refreshing");
+        console.log("loading more");
       }
     });
     if (ref.current) {
@@ -35,8 +35,7 @@ export function InfiniteScrollWrapper({
   return (
     <>
       {children}
-      <div ref={ref} className="hidden"></div>
-      <ItemLoading />
+      <ItemLoading ref={ref} />
       <ItemLoading />
       <ItemLoading />
       <ItemLoading />
