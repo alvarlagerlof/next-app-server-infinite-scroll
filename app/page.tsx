@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 
 import styles from "./page.module.css";
@@ -28,10 +28,10 @@ export default function Home({ searchParams }: PageProps) {
                 console.log({ start, limit });
 
                 return (
-                  <>
+                  <div key={start}>
                     {/** @ts-ignore */}
                     <ListPart start={start} limit={limit} />
-                  </>
+                  </div>
                 );
               })}
             </>

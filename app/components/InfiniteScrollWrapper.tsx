@@ -18,6 +18,7 @@ export function InfiniteScrollWrapper({
       if (entry.isIntersecting) {
         router.push(`?page=${parseInt(searchParams.get("page") ?? "0") + 1}`);
         router.refresh();
+        console.log("refreshing");
       }
     });
     if (ref.current) {

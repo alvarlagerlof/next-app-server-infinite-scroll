@@ -7,8 +7,6 @@ export default async function Home({ params }) {
   );
   const item = await response.json();
 
-  console.log(item);
-
   return (
     <div
       style={{
