@@ -20,10 +20,10 @@ export default function Home({ searchParams }) {
           list. The project is made in Next.js 13 in the <Code>app</Code> dir.
         </p>
         <p>
-          It works by using query params. By default, one "page" is loaded. As
-          you scorll down, a client component containing an IntersectionOvserver
-          is triggered, which adds <Code>1</Code> to the query param using{" "}
-          <Code>router.replace</Code>. The reason it&apos;s{" "}
+          It works by using query params. By default, one &quot;page&quot; is
+          loaded. As you scorll down, a client component containing an
+          IntersectionOvserver is triggered, which adds <Code>1</Code> to the
+          query param using <Code>router.replace</Code>. The reason it&apos;s{" "}
           <Code>.replace</Code> and not <Code>.push</Code> to not fill the
           history with query params, so that the back button still works as
           expected. Then <Code>router.refresh()</Code> is called to tell Next to
