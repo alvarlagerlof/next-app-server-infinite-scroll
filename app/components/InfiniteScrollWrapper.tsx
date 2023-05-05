@@ -1,15 +1,31 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { ReactElement, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { ItemLoading } from "./Item";
 
 export function InfiniteScrollWrapper({
+  page,
   children,
 }: {
-  children: ReactElement;
+  page: number;
+  children: ReactNode;
 }) {
+  const [pages, setPages] = useState(new Map([[1, children]]));
+
+  useEffect(() => {
+    // console.log(children)
+    setPages((prevPages) => {
+      console.log("prevpages", prevPages);
+      prevPages.set(page, children);
+      return prevPages;
+    });
+  }, [page]);
+
+  // console.log("PAGES", pages);
+
   const ref = useRef<HTMLDivElement>(null);
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -18,10 +34,10 @@ export function InfiniteScrollWrapper({
       ([entry]) => {
         // Ugly, I know
         if (entry.isIntersecting) {
-          router.replace(
-            `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
-          );
-          router.refresh();
+          // router.replace(
+          //   `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
+          // );
+          // router.refresh();
           console.log("loading more");
         }
       },
@@ -37,17 +53,29 @@ export function InfiniteScrollWrapper({
 
   return (
     <>
-      {children}
+      {[...pages].map(([key, value]) => {
+        return (
+          <>
+            <p className="col-span-4">Start</p>
+            {value}
+            <p className="col-span-4">end</p>
+          </>
+        );
+      })}
       <ItemLoading ref={ref} />
       <ItemLoading />
       <ItemLoading />
       <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
+      <button
+        onClick={() => {
+          router.replace(
+            `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
+          );
+          // router.refresh();
+        }}
+      >
+        Load more
+      </button>
     </>
   );
 }
