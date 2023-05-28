@@ -3,39 +3,34 @@ import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 import { Item } from "./components/Item";
 import { ItemData } from "./types";
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 2;
 
-const newSessionId = Math.random()
-const SessionContext = createServerContext('MyContext', newSessionId)
+const newSessionId = Math.random();
+const SessionContext = createServerContext("MyContext", newSessionId);
 
-export const revalidate = 0
+export const revalidate = 0;
 
 // @ts-ignore
 export default function Home({ searchParams }) {
   const { page } = searchParams;
 
-  const sessionId = useContext(SessionContext)
-  console.log({sessionId, newSessionId})
-  const isNewSession = sessionId === newSessionId
+  const sessionId = useContext(SessionContext);
+  console.log({ sessionId, newSessionId });
+  const isNewSession = sessionId === newSessionId;
 
-
-  const intPage = parseInt(page ?? "0");
-
-
+  const intPage = parseInt(page ?? "1");
 
   return (
     <div className="space-y-12">
-      <h2>{isNewSession ? "new session": "old session"}</h2>
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <InfiniteScrollWrapper page={intPage}>
-          {/*@ts-expect-error Async */}
-          <Page
-            start={(intPage - 1) * ITEMS_PER_PAGE}
-            limit={ITEMS_PER_PAGE}
-            key={intPage}
-          />
-        </InfiniteScrollWrapper>
-      </ul>
+      <h2>{isNewSession ? "new session" : "old session"}</h2>
+      <InfiniteScrollWrapper page={intPage}>
+        {/*@ts-expect-error Async */}
+        <Page
+          start={intPage * ITEMS_PER_PAGE}
+          limit={ITEMS_PER_PAGE}
+          key={intPage}
+        />
+      </InfiniteScrollWrapper>
     </div>
   );
 }

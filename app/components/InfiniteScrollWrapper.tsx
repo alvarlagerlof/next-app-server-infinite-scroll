@@ -53,25 +53,29 @@ export function InfiniteScrollWrapper({
 
   return (
     <>
-      {[...pages].map(([key, value]) => {
-        return (
-          <>
-            <p className="col-span-4">Start</p>
-            {value}
-            <p className="col-span-4">end</p>
-          </>
-        );
-      })}
-      <ItemLoading ref={ref} />
-      <ItemLoading />
-      <ItemLoading />
-      <ItemLoading />
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[...pages].map(([key, value]) => {
+          return (
+            <>
+              <p className="col-span-4">Start</p>
+              {value}
+              <p className="col-span-4">end</p>
+            </>
+          );
+        })}
+        <ItemLoading ref={ref} />
+        <ItemLoading />
+        {/*<ItemLoading />
+      <ItemLoading />*/}
+      </ul>
+
+      <br />
       <button
         onClick={() => {
           router.replace(
             `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
           );
-          // router.refresh();
+          //router.refresh();
         }}
       >
         Load more
