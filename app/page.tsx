@@ -5,7 +5,7 @@ import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 import { Item } from "./components/Item";
 import { ItemData } from "./types";
 
-export default function Home({ searchParams }) {
+export default function Home({ searchParams }: { searchParams: { page: string }}) {
   const { page } = searchParams;
 
   const intPage = parseInt(page ?? "0");
