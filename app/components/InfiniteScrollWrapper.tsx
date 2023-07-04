@@ -19,9 +19,10 @@ export function InfiniteScrollWrapper({
         // Ugly, I know
         if (entry.isIntersecting) {
           router.replace(
-            `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`
+            `?page=${parseInt(searchParams.get("page") ?? "0") + 1}`,
+	    {scroll: false}
           );
-          router.refresh();
+          //router.refresh();
           console.log("loading more");
         }
       },
