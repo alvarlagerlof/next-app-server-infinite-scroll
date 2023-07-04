@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { Code } from "./components/Code";
+// import { Code } from "./components/Code";
 import { InfiniteScrollWrapper } from "./components/InfiniteScrollWrapper";
 import { Item } from "./components/Item";
 import { ItemData } from "./types";
 
-// @ts-ignore
 export default function Home({ searchParams }) {
   const { page } = searchParams;
 
@@ -17,9 +16,9 @@ export default function Home({ searchParams }) {
         <p>
           This is a demo exploring using React 18 Server components as a
           mechanism to load more and render more data in an infinite scrolling
-          list. The project is made in Next.js 13 in the <Code>app</Code> dir.
+          list. The project is made in Next.js 13 in the app dir.
         </p>
-        <p>
+        {/* <p>
           It works by using query params. By default, one &quot;page&quot; is
           loaded. As you scorll down, a client component containing an
           IntersectionOvserver is triggered, which adds <Code>1</Code> to the
@@ -39,7 +38,7 @@ export default function Home({ searchParams }) {
             Edge Runtime
           </Link>{" "}
           on Vercel to render, which has no cold boot time.
-        </p>
+        </p> */}
       </header>
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <InfiniteScrollWrapper>
