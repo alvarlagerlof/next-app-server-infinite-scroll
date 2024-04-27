@@ -126,10 +126,10 @@
   dependencies:
     glob "10.3.10"
 
-"@next/font@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-14.2.2.tgz#d0acf1cf664d23a4407356f029c84fc6ac28326b"
-  integrity sha512-I4GLq5ZsMJHO+WtV3gNhcspvZsbuteUmV56wC28hEsUbtlEawTI0EW4GNVJ8xdK6eRjua7unAt7zAXDgtOvxlw==
+"@next/font@14.2.3":
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-14.2.3.tgz#7b2e868a960cbe089f825b2e1e09e2933a04b9dc"
+  integrity sha512-u35UstQmvl3Yrvv2MOi6RcXMH3xDtmWTXcvkYcC/vCZHLqj/5JQ5UyFRf5saDWxFlZIkEh8HCzwNGoiHIr1/NQ==
 
 "@next/swc-darwin-arm64@14.2.2":
   version "14.2.2"
